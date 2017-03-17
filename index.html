@@ -1,0 +1,114 @@
+
+<!-- saved from url=(0066)https://dl.dropboxusercontent.com/u/4345345/ssg-culture-tasks.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <style>
+            h1 {
+                text-align: center;
+                color: #00203c;
+                font-family: 'Helvetica Neue', sans-serif; 
+                font-size: 12vmin; 
+                font-weight: bold; 
+                letter-spacing: -1px; 
+                line-height: 1.2; 
+                text-align: center;
+            }
+
+            h2 {
+                text-align: center;
+                color: #00203c;
+                font-family: 'Open Sans', sans-serif; 
+                font-size: 8vmin; 
+                font-weight: 300; 
+                line-height: 32px; 
+                margin: 0 0 72px; 
+                text-align: center;
+            }
+            
+            body {
+                background-color: #e7e7e2;
+            }
+             
+            .centerer {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                height: 100%
+            }
+        </style>
+    <style type="text/css"></style></head>
+    <body>
+        <div class="centerer">
+            <h1 id="title"></h1>
+            <h2 id="subtitle"></h2>
+        </div>
+        <script>
+            var things = [
+                { 
+                    title: "Create a \"package\" branch when the first slice of the package is started.",
+                    subtitle: "Instead of \"feature\"/\"bugfix\""
+                },
+                { 
+                    title: "The slice branches of the package should branch from/merge to the package branch.",
+                },
+                { 
+                    title: "When the last slice of the package is reviewed and the development team have verified that the package criterias are fullfilled, the package branch is merged back to master"
+                },
+                { 
+                    title: "How can I best help my team today?" 
+                },
+                { 
+                    title: "We should pair program on new issues in areas one is not yet familiar with.",
+                    subtitle: "Preferably on the computer of the person that is less of an expert today."
+                },
+                { 
+                    title: "Focus on useful standalone increments during refinement and planning.",
+                },
+                { 
+                    title: "Focus on implementing packages from start to finish line.",
+                    subtitle: "After one package it should be possible to release."
+                },
+                { 
+                    title: "Specify your Friday project issues before sprint is started.",
+                    subtitle: "Do Friday projects early in the sprint."
+                },
+                { 
+                    title: "Take a step back during TeamAck and think about \"why\" a certain feature is needed",
+                    subtitle: "To be able to ask the right questions."
+                },
+                { 
+                    title: "Have the testing in mind when writing the package criteria, it should be verifiable.",
+                },
+                { 
+                    title: "When changing the package criteria verbally, also decide who will update the criteria in JIRA.",
+                },
+            ];
+            
+            function getRandomThing() {
+                var randomIndex = Math.floor(Math.random() * things.length);
+                return things[randomIndex];
+            }
+            
+            function getDailyThing() {
+                return things[getCurrentDayOfYear() % things.length];
+            }            
+            
+            function getCurrentDayOfYear() {
+                var now = new Date();
+                var start = new Date(now.getFullYear(), 0, 0);
+                var diff = now - start;
+                var oneDay = 1000 * 60 * 60 * 24;
+                var day = Math.floor(diff / oneDay);
+                
+                return day;
+            }
+            
+            function displayThing(thing) {
+                document.querySelector("#title").innerHTML = thing.title;
+
+                if (thing.subtitle) {
+                    document.querySelector("#subtitle").innerHTML = thing.subtitle;
+                }
+            }            
+            displayThing(getDailyThing());
+        </script>
+</body></html>
