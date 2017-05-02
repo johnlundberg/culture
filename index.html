@@ -44,14 +44,11 @@
         <script>
             var things = [
                 { 
-                    title: "Create a \"package\" branch when the first slice of the package is started.",
+                    title: "Create an \"epic\" branch when the first slice of the epic is started.",
                     subtitle: "Instead of \"feature\"/\"bugfix\""
                 },
                 { 
-                    title: "The slice branches of the package should branch from/merge to the package branch.",
-                },
-                { 
-                    title: "When the last slice of the package is reviewed and the development team have verified that the package criterias are fullfilled, the package branch is merged back to master"
+                    title: "The issue branches of the epic should branch from/merge to the epic branch.",
                 },
                 { 
                     title: "How can I best help my team today?" 
@@ -64,23 +61,38 @@
                     title: "Focus on useful standalone increments during refinement and planning.",
                 },
                 { 
-                    title: "Focus on implementing packages from start to finish line.",
-                    subtitle: "After one package it should be possible to release."
+                    title: "Focus on implementing epics from start to finish line.",
+                    subtitle: "After one epic it should be possible to release."
                 },
                 { 
-                    title: "Specify your Friday project issues before sprint is started.",
-                    subtitle: "Do Friday projects early in the sprint."
-                },
-                { 
-                    title: "Take a step back during TeamAck and think about \"why\" a certain feature is needed",
+                    title: "Take a step back during refinement and think about \"why\" a certain feature is needed",
                     subtitle: "To be able to ask the right questions."
                 },
                 { 
-                    title: "Have the testing in mind when writing the package criteria, it should be verifiable.",
+                    title: "Have the testing in mind when writing the criteria, it should be verifiable.",
                 },
                 { 
-                    title: "When changing the package criteria verbally, also decide who will update the criteria in JIRA.",
+                    title: "When changing the epic or user story criteria verbally, also decide who will update the criteria in JIRA.",
                 },
+                { 
+                    title: "Found a critical bug?",
+                    subtitle: "Raise it with the TeamAck developer!",
+                },
+                { 
+                    title: "Generally run VS with break on exceptions to find exceptions early.",
+                },
+                { 
+                    title: "Think about the complexity of new functionality",
+                    subtitle: "So that we don't miss aspects when pointing new user stories.",
+                },
+                { 
+                    title: "Team up on issues that someone else is the expert on",
+                    subtitle: "So that more team members become experts in that area",
+                },
+                {
+                    title: "We can merge an unfinished code review to the package branch in extreme circumstance",
+                    subtitle: "In that case we need to add subtasks for the remaining unresolved comments."
+                }
             ];
             
             function getRandomThing() {
