@@ -50,32 +50,25 @@
                     subtitle: "Preferably on the computer of the person that is less of an expert today."
                 },
                 { 
-                    title: "Focus on useful standalone increments during refinement and planning.",
-                },
-                { 
                     title: "Focus on implementing epics from start to finish line.",
                     subtitle: "After one epic it should be possible to release."
                 },
                 { 
-                    title: "Take a step back during refinement and think about \"why\" a certain feature is needed.",
+                    title: "During refinement, think about \"why\" a certain feature is needed.",
                     subtitle: "To be able to ask the right questions."
                 },
                 { 
                     title: "Have the testing in mind when writing the criteria, it should be verifiable.",
                 },
                 { 
-                    title: "When changing the epic or user story criteria verbally, also decide who will update the criteria in JIRA.",
+                    title: "When changing the epic or user story criteria verbally, also update the criteria in JIRA.",
                 },
                 { 
                     title: "Found a critical bug?",
-                    subtitle: "Raise it with the TeamAck developer!",
+                    subtitle: "Raise it with the TeamAck developer! Should we release a hotfix?",
                 },
                 { 
                     title: "Generally run VS with break on exceptions to find exceptions early.",
-                },
-                { 
-                    title: "Think about the complexity of new functionality.",
-                    subtitle: "So that we don't miss aspects when pointing new user stories.",
                 },
                 { 
                     title: "Team up on issues that someone else is the expert on.",
@@ -102,7 +95,20 @@
                 {
                     title: "Always treat the RT backlog as prioritized.",
                     subtitle: "Focus on working effectively on the top rather than working on many things at once."
-                }
+                },
+                {
+                    title: "Review third party components in beginning of release cycle"
+                },
+                    title: "Test before release with the whole team."
+                },
+                {
+                    title: "Discuss if new issues that are High/Critical should be fixed in a hotfix-branch",
+                    subtitle: "Discuss this during the morning bug bash meeting"
+                },
+                {
+                    title: "When refactoring affects big part of product.",
+                    subtitle: "Have more than one reviewer and perform more testing in review step"
+                },
             ];
             
             function getRandomThing() {
@@ -131,6 +137,6 @@
                     document.querySelector("#subtitle").innerHTML = thing.subtitle;
                 }
             }            
-            displayThing(getDailyThing());
+            displayThing(getRandomThing());
         </script>
 </body></html>
