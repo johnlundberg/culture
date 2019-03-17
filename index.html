@@ -18,7 +18,8 @@
         }
 
         body {
-            background-color: #e7e7e2;
+            /* background-color: #e7e7e2; */
+            background: linear-gradient(to bottom, #e7e7e2 0%, #333 100%);
         }
 
         .flex {
@@ -52,16 +53,44 @@
         }
 
         #title {
+            /* Font */
             font-family: 'Helvetica Neue', sans-serif;
             font-size: 11vmin;
             font-weight: bold;
             letter-spacing: -1px;
+
+            /* Styling */
+            background: linear-gradient(0deg, #959595 0%,#0d0d0d 46%,#010101 50%,#0a0a0a 53%,#4e4e4e 76%,#383838 87%,#1b1b1b 100%);
+            background-size: 10px 13.6vmin;
+            background-position-y: 7vmin;
+
+            text-shadow: 4px 4px 4px #0008, -1px -1px 1px #ff02;
+            -webkit-text-stroke: 1px #fff5;
+
+            /* Styling - Needs to be applied after background is setup. */
+            background-clip: unset;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;    
         }
 
         #subtitle {
+            /* Font */
             font-family: 'Open Sans', sans-serif;
             font-size: 8vmin;
             font-weight: 300;
+
+            /* Styling */
+            background: linear-gradient(to bottom, #feccb1 0%,#f17432 50%,#ea5507 51%,#fb955e 100%);
+            background-size: 10px 9.1vmin;
+            background-position-y: 5.6vmin;
+
+            text-shadow: 2px 2px 2px #0008;
+            -webkit-text-stroke: 1px #fff5;
+
+            /* Styling - Needs to be applied after background is setup. */
+            background-clip: unset;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;    
 
             /* Use a bit delayed and slower animation */
             transition-delay: .6s;
@@ -183,7 +212,7 @@
             },
             // Item: 10
             {
-                title: "Pair programming on blocking issue from start",
+                title: "Use pair programming on blocking issues from the start",
                 subtitle: "To decrease the time it is blocking"
             },
             // Item: 11
