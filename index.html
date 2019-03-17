@@ -5,24 +5,40 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Griffeye - Culture</title>
     <style>
+
+        html, body {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        html, body, div, h1, h2 {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #e7e7e2;
-            overflow: hidden;
-            margin: 5%;
         }
 
-        div {
-            margin: 0;
-            padding: 0;
-        }
-
-        h1,
-        h2 {
+        .flex {
             position: relative;
-            margin: 0;
-            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            align-items: stretch;
+            height: 100%;
+            padding: 5%;
+        }
+
+        .item {
+            position: relative;
             display: block;
             text-align: center;
+            padding: 5vh 5vw;
+
+            /* border: 1px solid green; */
 
             /* Set up transitions */
             transition-property: opacity, transform;
@@ -35,18 +51,21 @@
             transform: scale(1.3) rotateY(30deg) skew(-20deg) rotateY(-70deg) rotateX(-90deg);
         }
 
-        h1 {
+        #title {
             font-family: 'Helvetica Neue', sans-serif;
-            font-size: 10vmin;
+            font-size: 11vmin;
             font-weight: bold;
             letter-spacing: -1px;
         }
 
-        h2 {
+        #subtitle {
             font-family: 'Open Sans', sans-serif;
             font-size: 8vmin;
             font-weight: 300;
-            margin-top: 50px;
+
+            /* Use a bit delayed and slower animation */
+            transition-delay: .6s;
+            transition-duration: 1.2s;
         }
 
         .active {
@@ -55,132 +74,21 @@
             transform: scale(1) skew(0deg) rotateX(0deg);
         }
 
-        h2.active {
-            transition-delay: .6s;
-            transition-duration: 1.2s;
+        .hidden {
+            display: none;
         }
 
-        .centered {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            height: calc(100% - 6vh);
-            margin: 3vh 0;
-        }
     </style>
 </head>
 
 <body>
-    <div class="centered">
-        <div class="container">
-            <h1 id="title" />
-        </div>
-        <div class="container">
-            <h2 id="subtitle" />
-        </div>
+    <div class="flex">
+        <h1 class="item" id="title" />
+        <h2 class="item" id="subtitle" />
     </div>
-    <script>
-        var things = [
-            {
-                title: "How can I best help my team today?"
-            },
-            {
-                title: "We should pair program on new issues in areas that no one is yet familiar with",
-                subtitle: "Preferably on the computer of the person that has less understanding of the feature today"
-            },
-            {
-                title: "Focus on implementing epics from start to finish",
-                subtitle: "After one epic is ready, it should be possible to release."
-            },
-            {
-                title: "During refinement, think about \"why\" a certain feature is needed",
-                subtitle: "To be able to ask the right questions"
-            },
-            {
-                title: "Have the testing in mind when writing the criteria, it should be verifiable",
-                subtitle: "Also think outside the happy path, and how to convey useful errors to the users"
-            },
-            {
-                title: "When changing the epic or user story criteria verbally, also update the criteria in JIRA",
-            },
-            {
-                title: "Did you just find a critical bug?",
-                subtitle: "Raise it with the TeamAck developer! Should we release a hotfix?",
-            },
-            {
-                title: "Generally run VS with break on all exceptions, to find exceptions early",
-                subtitle: "Using the VSColorOutput extension helps in finding errors & warnings in the output log"
-            },
-            {
-                title: "Team up on issues that someone else is the expert on",
-                subtitle: "So that more team members become experts in that area",
-            },
-            {
-                title: "We can merge an unfinished code review to the package branch in extreme circumstances",
-                subtitle: "In that case we need to add subtasks for the remaining unresolved comments"
-            },
-            {
-                title: "Pair programming on blocking issue from start",
-                subtitle: "To decrease the time it is blocking"
-            },
-            {
-                title: "Look for issues with dependencies and complexity between stories during refinement",
-                subtitle: "Try to define which story that drives the issue"
-            },
-            {
-                title: "Do a large refactoring on a separate branch to reduce the risk of merge conflicts",
-                subtitle: "But try to keep the branch concise, to not change the functionality"
-            },
-            {
-                title: "During Pull Request review, focus on breaking the implementation",
-                subtitle: "Instead of just testing the happy path"
-            },
-            {
-                title: "Always treat the RT backlog as prioritized",
-                subtitle: "Focus on working effectively on the top rather than working on many things at once"
-            },
-            {
-                title: "Review third party components in the beginning of a release cycle",
-                subtitle: "So there is time for unseen bugs and errors to creep up"
-            },
-            {
-                title: "Test before release with the whole team",
-                subtitle: "Sounds easy enough, doesn't it?"
-            },
-            {
-                title: "Discuss if new High/Critical issues should be fixed in a hotfix-branch",
-                subtitle: "Address this during the morning bug bash meeting"
-            },
-            {
-                title: "When a refactoring affects a big part of the product",
-                subtitle: "Have more than one reviewer and perform more testing in the review step"
-            },
-            {
-                title: "Have some team-internal release-happenings a few times a year",
-                subtitle: "If there is no release party, the team spirit will decline"
-            },
-            {
-                title: "RM should help during release testing, pair-testing-style",
-                subtitle: "This will help to ensure that we have better coverage"
-            },
-            {
-                title: "Update the wallboard with what you are working on before standup"
-            },
-            {
-                title: "A task force should have at least two members",
-                subtitle: "So that there always is someone with whom you can raise any issues, do refinement, and discuss ideas"
-            },
-            {
-                title: "When refactoring, have more than one reviewer and perform more testing in the review step",
-                subtitle: "Pinning tests could help you avoid any regressions"
-            },
-        ];
+<script>
 
-        function getRandomThing() {
-            var randomIndex = Math.floor(Math.random() * things.length);
-            return things[randomIndex];
-        }
+        //#region Date Stuff (unused)
 
         function getDailyThing() {
             return things[getCurrentDayOfYear() % things.length];
@@ -196,23 +104,206 @@
             return day;
         }
 
-        function displayThing(thing) {
-            // var title = document.querySelector("#title");
-            // var subtitle = document.querySelector("#subtitle");
-            title.innerHTML = thing.title;
+        //#endregion
 
-            if (thing.subtitle) {
-                subtitle.innerHTML = thing.subtitle;
+        //#region Random Functions
+
+        let lastRandomIndex = -1;
+
+        function getPseudoRandomIndex() {
+            /// Prevent the same random index to be returned twice in a row
+
+            do {
+                var rnd = Math.floor(Math.random() * things.length);
             }
+            while(rnd === lastRandomIndex)
+            lastRandomIndex = rnd;
+            return rnd;
+        }
+
+        function getThing(index) {
+            return things[index];
+        }
+
+        function getRandomThing() {
+            let rnd = getPseudoRandomIndex();
+            return getThing(rnd);
+        }
+
+        //#endregion
+
+        var things = [
+            // Item: 0
+            {
+                title: "How can I best help my team today?"
+            },
+            // Item: 1
+            {
+                title: "We should pair program on new issues in areas that no one is yet familiar with",
+                subtitle: "Preferably on the computer of the person that has less understanding of the feature today"
+            },
+            // Item: 2
+            {
+                title: "Focus on implementing epics from start to finish",
+                subtitle: "After one epic is ready, it should be possible to release"
+            },
+            // Item: 3
+            {
+                title: "During refinement, think about \"why\" a certain feature is needed",
+                subtitle: "To be able to ask the right questions"
+            },
+            // Item: 4
+            {
+                title: "Have the testing in mind when writing the criteria, it should be verifiable",
+                subtitle: "Also think outside the happy path, and how to convey useful errors to the users"
+            },
+            // Item: 5
+            {
+                title: "When changing the epic or user story criteria verbally, also update the criteria in JIRA",
+            },
+            // Item: 6
+            {
+                title: "Did you just find a critical bug?",
+                subtitle: "Raise it with the TeamAck developer! Should we release a hotfix?",
+            },
+            // Item: 7
+            {
+                title: "Generally run VS with break on all exceptions, to find exceptions early",
+                subtitle: "Using the VSColorOutput extension helps in finding errors & warnings in the output log"
+            },
+            // Item: 8
+            {
+                title: "Team up on issues that someone else is the expert on",
+                subtitle: "So that more team members become experts in that area",
+            },
+            // Item: 9
+            {
+                title: "We can merge unfinished reviews to the package branch in extreme circumstances",
+                subtitle: "In that case we need to add subtasks for the remaining unresolved comments"
+            },
+            // Item: 10
+            {
+                title: "Pair programming on blocking issue from start",
+                subtitle: "To decrease the time it is blocking"
+            },
+            // Item: 11
+            {
+                title: "Look for issues with dependencies and complexity between stories during refinement",
+                subtitle: "Try to define which story that drives the issue"
+            },
+            // Item: 12
+            {
+                title: "Do a large refactoring on a separate branch to reduce the risk of merge conflicts",
+                subtitle: "But try to keep the branch concise, to not change the functionality"
+            },
+            // Item: 13
+            {
+                title: "During Pull Request review, focus on breaking the implementation",
+                subtitle: "Instead of just testing the happy path"
+            },
+            // Item: 14
+            {
+                title: "Always treat the RT backlog as prioritized",
+                subtitle: "Focus on working effectively on the top rather than working on many things at once"
+            },
+            // Item: 15
+            {
+                title: "Review third party components in the beginning of a release cycle",
+                subtitle: "So there is time for unseen bugs and errors to creep up"
+            },
+            // Item: 16
+            {
+                title: "Test before release with the whole team",
+                subtitle: "Sounds easy enough, doesn't it?"
+            },
+            // Item: 17
+            {
+                title: "Discuss if new High/Critical issues should be fixed in a hotfix-branch",
+                subtitle: "Address this during the morning bug bash meeting"
+            },
+            // Item: 18
+            {
+                title: "When a refactoring affects a big part of the product",
+                subtitle: "Have more than one reviewer and perform more testing in the review step"
+            },
+            // Item: 19
+            {
+                title: "Have some team-internal release-happenings a few times a year",
+                subtitle: "If there is no release party, the team spirit will decline"
+            },
+            // Item: 20
+            {
+                title: "RM should help during release testing, pair-testing-style",
+                subtitle: "This will help to ensure that we have better coverage"
+            },
+            // Item: 21
+            {
+                title: "Update the wallboard with what you are working on before standup"
+            },
+            // Item: 22
+            {
+                title: "A task force should have at least two members",
+                subtitle: "So that there always is someone with whom you can raise any issues, do refinement, and discuss ideas"
+            },
+            // Item: 23
+            {
+                title: "When refactoring, have more than one reviewer and perform more testing in the review step",
+                subtitle: "Pinning tests could help you avoid any regressions"
+            },
+        ];
+
+        function displayThing(thing) {
+            let sub = thing.subtitle || '';
+
+            title.innerHTML = thing.title;
+            subtitle.innerHTML = sub;
+
+            if('' === sub)
+                subtitle.classList.add('hidden');
+            else
+                subtitle.classList.remove('hidden');
         }
 
         function showThing() {
-            title.classList.add("active");
-            subtitle.classList.add("active");
+            title.classList.add('active');
+            subtitle.classList.add('active');
         }
 
-        displayThing(getRandomThing());
-        setTimeout(showThing, 0);
+        function hideThing() {
+            title.classList.remove('active');
+            subtitle.classList.remove('active');
+        }
+
+        function showNewThing() {
+            displayThing(getRandomThing());
+            setTimeout(showThing, 0);
+        }
+
+        function init() {
+
+            showNewThing();
+
+            // Click handler
+            document.addEventListener('click', function() {
+                hideThing();
+                setTimeout(showNewThing, 1800);
+            });
+
+            // Focus handler
+            document.addEventListener('visibilitychange', function() {
+                var state = document.visibilityState;
+
+                if('visible' === state) {
+                    setTimeout(function() {
+                        hideThing();
+                        setTimeout(showNewThing, 1800);
+                    }, 1000);
+                }
+            })
+        }
+
+        init();
+
     </script>
 </body>
 
