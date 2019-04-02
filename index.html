@@ -20,7 +20,6 @@
         }
 
         body {
-            /* background-color: #e7e7e2; */
             background:
                 radial-gradient(ellipse at center, #0000 0%, #000b 100%),
                 linear-gradient(to bottom, #c6ffdd 0%, #fbd786 50%, #f7797d 100%);
@@ -269,7 +268,6 @@
 
         function displayThing(thing) {
             let sub = thing.subtitle || '';
-
             title.innerHTML = thing.title;
             subtitle.innerHTML = sub;
 
@@ -328,8 +326,6 @@
                     setTimeout(flip, 3000);
                 }
             });
-
-
         }
 
         function init() {
